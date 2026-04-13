@@ -2,23 +2,21 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "关于我们",
-  description: "了解 SOLE Store 的品牌故事与理念。",
+  description: "了解浔海科技的服务与项目经验。",
 };
 
-/** 关于页：品牌叙事（演示文案） */
+/** 关于页：企业介绍 */
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
       <h1 className="font-heading text-4xl font-black tracking-tight">
-        关于 SOLE Store
+        关于浔海科技
       </h1>
       <p className="mt-6 text-lg text-muted-foreground">
-        SOLE Store
-        是一个以「态度先行」为理念的潮流鞋履独立站演示项目：深色界面、霓虹渐变与街头视觉语言，只为衬托每一双鞋的主角感。
+        浔海科技专注企业官网建设、独立站搭建与 SEO 优化服务，致力于为企业提供清晰、实用且可持续迭代的网站解决方案。
       </p>
       <p className="mt-4 text-muted-foreground">
-        本站商品、价格与库存均为前端假数据，用于展示 Next.js App Router、Tailwind
-        CSS 与 shadcn/ui 组件的整合方式。后续可接入真实 CMS、支付与物流。
+        我们以转化为导向，从信息架构、页面设计到上线交付全流程协作，帮助客户把网站变成稳定获客入口。
       </p>
     </div>
   );

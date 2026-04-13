@@ -23,11 +23,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SOLE Store - 潮流鞋履",
-    template: "%s | SOLE Store - 潮流鞋履",
+    default: "浔海科技 - 企业展示站",
+    template: "%s | 浔海科技 - 企业展示站",
   },
-  description:
-    "年轻潮流球鞋、跑鞋与休闲鞋独立站。深色街头美学与科技感购物体验。",
+  description: "企业官网搭建、独立站建设与SEO优化服务展示站。",
 };
 
 export default function RootLayout({
