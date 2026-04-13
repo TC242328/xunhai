@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// 前台商品与后台共用一条记录
+model Product {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name          String
+  tagline       String
+  category      String
+  categoryLabel String
+  price         Int
+  isNew         Boolean  @default(false)
+  description   String
+  colors        String
+  gallery       String
+  sizes         String
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  orderItems    OrderItem[]
+}
+
+/// Stripe 支付配置（单例）
+model PaymentSetting {
+  id                   Int      @id @default(1)
+  provider             String   @default("stripe")
+  stripeSecretKey      String?
+  stripePublishableKey String?
+  stripeWebhookSecret  String?
+  currency             String   @default("cny")
+  enabled              Boolean  @default(false)
+  updatedAt            DateTime @updatedAt
+  createdAt            DateTime @default(now())
+}
+
+/// 订单主表
+model Order {
+  id                String      @id @default(cuid())
+  orderNo           String      @unique
+  status            String      @default("pending")
+  totalAmount       Int
+  currency          String      @default("cny")
+  stripeSessionId   String?     @unique
+  stripePaymentIntent String?
+  customerEmail     String?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  items             OrderItem[]
+}
+
+/// 订单明细
+model OrderItem {
+  id         String   @id @default(cuid())
+  orderId    String
+  productId  String
+  productName String
+  slug       String
+  colorLabel String
+  size       String
+  unitPrice  Int
+  quantity   Int
+  lineTotal  Int
+  createdAt  DateTime @default(now())
+
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+  @@index([productId])
+}
