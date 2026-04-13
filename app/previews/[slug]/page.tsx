@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 type PreviewConfig = {
@@ -7,6 +8,18 @@ type PreviewConfig = {
   summary: string;
   sections: string[];
 };
+
+const corporatePreviewSlices = [
+  { src: "/case-images/hongcai-case-full-1.png", width: 307, height: 341, alt: "企业官网示例预览 · 上" },
+  { src: "/case-images/hongcai-case-full-2.png", width: 307, height: 341, alt: "企业官网示例预览 · 中" },
+  { src: "/case-images/hongcai-case-full-3.png", width: 307, height: 342, alt: "企业官网示例预览 · 下" },
+] as const;
+
+const independentPreviewSlices = [
+  { src: "/case-images/independent-full-example-1.png", width: 344, height: 341, alt: "独立站示例预览 · 上" },
+  { src: "/case-images/independent-full-example-2.png", width: 344, height: 341, alt: "独立站示例预览 · 中" },
+  { src: "/case-images/independent-full-example-3.png", width: 344, height: 342, alt: "独立站示例预览 · 下" },
+] as const;
 
 const previews: Record<string, PreviewConfig> = {
   corporate: {
@@ -56,14 +69,24 @@ export default async function PreviewDetailPage({
 
         <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           <article className="mx-auto mb-6 w-full max-w-md overflow-hidden rounded-xl border border-slate-200 bg-white">
-            <div className="bg-slate-50 p-4">
-              <img
-                src="/case-images/hongcai-case-full.png"
-                alt="企业官网示例整站截图"
-                className="mx-auto h-auto max-w-full object-contain"
-                loading="lazy"
-              />
+            <div className="divide-y divide-slate-200/80 bg-slate-50">
+              {corporatePreviewSlices.map((slice, index) => (
+                <div key={slice.src} className="px-3 py-3 text-center sm:px-4 sm:py-4">
+                  <Image
+                    src={slice.src}
+                    alt={slice.alt}
+                    width={slice.width}
+                    height={slice.height}
+                    className="mx-auto h-auto max-w-full object-contain"
+                    sizes="(max-width: 640px) 100vw, 448px"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
             </div>
+            <p className="border-t border-slate-200/80 bg-slate-50 px-4 py-2.5 text-center text-xs text-slate-500">
+              同一案例分为 3 段，便于手机端阅读
+            </p>
           </article>
 
           <article className="rounded-xl border border-slate-200 bg-white p-6">
@@ -125,15 +148,25 @@ export default async function PreviewDetailPage({
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-          <article className="mb-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
-            <div className="bg-slate-50 p-4">
-              <img
-                src="/case-images/independent-full-example.png"
-                alt="独立站示例整站展示"
-                className="mx-auto h-auto max-w-full object-contain"
-                loading="lazy"
-              />
+          <article className="mx-auto mb-6 w-full max-w-md overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <div className="divide-y divide-slate-200/80 bg-slate-50">
+              {independentPreviewSlices.map((slice, index) => (
+                <div key={slice.src} className="px-3 py-3 text-center sm:px-4 sm:py-4">
+                  <Image
+                    src={slice.src}
+                    alt={slice.alt}
+                    width={slice.width}
+                    height={slice.height}
+                    className="mx-auto h-auto max-w-full object-contain"
+                    sizes="(max-width: 640px) 100vw, 448px"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
             </div>
+            <p className="border-t border-slate-200/80 bg-slate-50 px-4 py-2.5 text-center text-xs text-slate-500">
+              同一案例分为 3 段，便于手机端阅读
+            </p>
           </article>
 
           <article className="rounded-xl border border-slate-200 bg-white p-6">
