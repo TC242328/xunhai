@@ -214,6 +214,15 @@ export default function HomePage() {
         <p className="mx-auto mt-4 max-w-2xl text-slate-600">
           联系我们，1 对 1 定制网站设计、独立站设计与SEO优化方案（电话/微信同号）。
         </p>
+        <div className="mt-8 inline-flex flex-col items-center rounded-xl border border-slate-200 bg-white p-4">
+          <img
+            src="/case-images/site-qrcode.png"
+            alt="浔海科技官网二维码"
+            className="h-40 w-40 rounded-md object-contain"
+            loading="lazy"
+          />
+          <p className="mt-3 text-xs text-slate-500">扫码直达官网</p>
+        </div>
         <a
           href="tel:13805492641"
           className="mt-8 inline-flex rounded-md bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
