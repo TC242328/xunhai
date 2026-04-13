@@ -76,29 +76,12 @@ export default function HomePage() {
               联系我们
             </a>
           </nav>
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <a
-              href="https://xunhai.vercel.app"
-              target="_blank"
-              rel="noreferrer"
-              className="flex flex-col items-center rounded-md border border-slate-200 bg-white p-1 shadow-sm transition hover:border-slate-300"
-              title="扫码或点击查看官网"
-            >
-              <img
-                src="/case-images/site-qrcode.png"
-                alt="官网二维码"
-                className="h-11 w-11 object-contain sm:h-12 sm:w-12"
-                loading="lazy"
-              />
-              <span className="hidden text-[10px] font-medium text-slate-500 sm:block">扫码</span>
-            </a>
-            <a
-              href="tel:13805492641"
-              className="rounded-md bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90 sm:px-4 sm:text-sm"
-            >
-              电话/微信：13805492641
-            </a>
-          </div>
+          <a
+            href="tel:13805492641"
+            className="shrink-0 rounded-md bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90 sm:px-4 sm:text-sm"
+          >
+            电话/微信：13805492641
+          </a>
         </div>
       </header>
 
