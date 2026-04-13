@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getProductBySlug } from "@/lib/product-service";
-import { ProductDetailClient } from "@/components/shop/product-detail-client";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-type PageProps = { params: Promise<{ slug: string }> };
-
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
-  title: "商品详情",
-  description: "查看商品详情与购买信息。",
+  title: "页面说明",
+  description: "当前站点为企业展示版本。",
 };
 
-/** 商品详情：大图与多角度、配色尺码、加入购物车 */
-export default async function ProductPage({ params }: PageProps) {
-  const { slug } = await params;
-  const product = await getProductBySlug(slug);
-  if (!product) notFound();
-
+export default function ProductPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <Link
@@ -32,7 +20,10 @@ export default async function ProductPage({ params }: PageProps) {
       >
         ← 返回商店
       </Link>
-      <ProductDetailClient product={product} />
+      <div className="rounded-lg border border-slate-200 bg-white p-6">
+        <h1 className="text-2xl font-black tracking-tight sm:text-3xl">企业展示站说明</h1>
+        <p className="mt-3 text-slate-600">商品详情模块已下线，当前版本仅保留企业官网展示内容。</p>
+      </div>
     </div>
   );
 }
