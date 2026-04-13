@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "浏览球鞋、跑鞋与休闲鞋，按类型与价格筛选。",
 };
 
+export const dynamic = "force-dynamic";
+
 type ShopPageProps = {
   searchParams: Promise<{ category?: string; price?: string }>;
 };

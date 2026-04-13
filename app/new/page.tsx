@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "SOLE Store 本季新品与限定配色。",
 };
 
+export const dynamic = "force-dynamic";
+
 /** 新品页：筛选 isNew，数据来自数据库 */
 export default async function NewArrivalsPage() {
   const all = await getAllProducts();
