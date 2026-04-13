@@ -10,17 +10,10 @@ type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const product = await getProductBySlug(slug);
-  if (!product) return { title: "未找到" };
-  return {
-    title: product.name,
-    description: product.tagline,
-  };
-}
+export const metadata: Metadata = {
+  title: "商品详情",
+  description: "查看商品详情与购买信息。",
+};
 
 /** 商品详情：大图与多角度、配色尺码、加入购物车 */
 export default async function ProductPage({ params }: PageProps) {
